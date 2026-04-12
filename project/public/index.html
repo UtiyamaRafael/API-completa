@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Digital</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+  <div id="auth-section" class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Login</h2>
+          </div>
+          <div class="card-body">
+            <form id="login-form">
+              <div class="mb-3">
+                <label for="login-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="login-email" placeholder="seu@email.com" required>
+              </div>
+              <div class="mb-3">
+                <label for="login-password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="login-password" placeholder="Sua senha" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+            <hr>
+            <button id="show-register" class="btn btn-outline-secondary w-100">Criar Conta</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="register-section" class="container mt-5" style="display: none;">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-header bg-success text-white">
+            <h2 class="mb-0">Registrar</h2>
+          </div>
+          <div class="card-body">
+            <form id="register-form">
+              <div class="mb-3">
+                <label for="register-name" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="register-name" placeholder="Seu nome completo" required>
+              </div>
+              <div class="mb-3">
+                <label for="register-email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="register-email" placeholder="seu@email.com" required>
+              </div>
+              <div class="mb-3">
+                <label for="register-password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="register-password" placeholder="Mínimo 6 caracteres" required>
+              </div>
+              <button type="submit" class="btn btn-success w-100">Registrar</button>
+            </form>
+            <hr>
+            <button id="show-login" class="btn btn-outline-secondary w-100">Voltar ao Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="main-section" style="display: none;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="bi bi-book"></i> Biblioteca Digital
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <button class="nav-link btn btn-link text-white" id="books-btn">Livros</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link btn btn-link text-white" id="loans-btn">Meus Empréstimos</button>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown">
+                Administração
+              </a>
+              <ul class="dropdown-menu">
+                <li><button class="dropdown-item" id="users-btn">Gerenciar Usuários</button></li>
+                <li><button class="dropdown-item" id="all-loans-btn">Todos os Empréstimos</button></li>
+              </ul>
+            </li>
+          </ul>
+          <button id="logout-btn" class="btn btn-outline-light">Sair</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <div id="content">
+        <!-- Conteúdo dinâmico aqui -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para detalhes -->
+  <div class="modal fade" id="detailModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailModalTitle">Detalhes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="detailModalBody">
+          <!-- Conteúdo do modal -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.btn {
+  border-radius: 5px;
+}
+
+.table {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.badge {
+  font-size: 0.8em;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+}
+
+.card-header {
+  border-radius: 10px 10px 0 0 !important;
+}
+
+.alert {
+  border-radius: 5px;
+}
+
+.btn-group .btn {
+  border-radius: 0;
+}
+
+.btn-group .btn:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.btn-group .btn:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.filters {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.book-card {
+  transition: transform 0.2s;
+}
+
+.book-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.loan-status {
+  font-weight: bold;
+}
+
+.loan-status.active {
+  color: #dc3545;
+}
+
+.loan-status.returned {
+  color: #28a745;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .table-responsive {
+    font-size: 0.9em;
+  }
+}
