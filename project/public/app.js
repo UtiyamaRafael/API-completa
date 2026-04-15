@@ -53,6 +53,8 @@ document.getElementById('register-form').addEventListener('submit', async (e) =>
   }
 });
 
+document.getElementById('show-home-login').addEventListener('click', showLogin);
+document.getElementById('show-home-register').addEventListener('click', showRegister);
 document.getElementById('show-register').addEventListener('click', showRegister);
 document.getElementById('show-login').addEventListener('click', showLogin);
 document.getElementById('logout-btn').addEventListener('click', logout);
@@ -64,22 +66,34 @@ document.getElementById('users-btn').addEventListener('click', () => loadUsers()
 document.getElementById('all-loans-btn').addEventListener('click', () => loadAllLoans());
 
 // Functions
+function showHome() {
+  document.getElementById('home-section').style.display = 'block';
+  document.getElementById('auth-section').style.display = 'none';
+  document.getElementById('register-section').style.display = 'none';
+  document.getElementById('main-section').style.display = 'none';
+  document.getElementById('navbar-user-text').textContent = '';
+}
+
 function showLogin() {
+  document.getElementById('home-section').style.display = 'none';
   document.getElementById('auth-section').style.display = 'block';
   document.getElementById('register-section').style.display = 'none';
   document.getElementById('main-section').style.display = 'none';
 }
 
 function showRegister() {
+  document.getElementById('home-section').style.display = 'none';
   document.getElementById('auth-section').style.display = 'none';
   document.getElementById('register-section').style.display = 'block';
   document.getElementById('main-section').style.display = 'none';
 }
 
 function showMain() {
+  document.getElementById('home-section').style.display = 'none';
   document.getElementById('auth-section').style.display = 'none';
   document.getElementById('register-section').style.display = 'none';
   document.getElementById('main-section').style.display = 'block';
+  document.getElementById('navbar-user-text').textContent = currentUser?.name ? `Olá, ${currentUser.name}` : '';
   loadBooks(); // Default view
 }
 
@@ -87,7 +101,7 @@ function logout() {
   token = null;
   currentUser = null;
   localStorage.removeItem('token');
-  showLogin();
+  showHome();
   showAlert('Logout realizado!', 'info');
 }
 
@@ -118,9 +132,15 @@ async function apiCall(url, options = {}) {
 }
 
 // Books
-async function loadBooks(page = 1, limit = 12) {
+async function loadBooks(page = 1, limit = 12, filters = {}) {
   try {
-    const res = await apiCall(`${API_BASE}/api/books?page=${page}&limit=${limit}`);
+    const params = new URLSearchParams();
+    params.set('page', page);
+    params.set('limit', limit);
+    if (filters.title) params.set('title', filters.title);
+    if (filters.author) params.set('author', filters.author);
+
+    const res = await apiCall(`${API_BASE}/api/books?${params.toString()}`);
     const data = await res.json();
     if (res.ok) {
       renderBooks(data.data, data.meta);
@@ -672,8 +692,8 @@ if (token) {
     showMain();
   } catch (e) {
     localStorage.removeItem('token');
-    showLogin();
+    showHome();
   }
 } else {
-  showLogin();
+  showHome();
 }

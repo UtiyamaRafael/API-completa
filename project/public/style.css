@@ -73,6 +73,32 @@ body {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+.hero-section {
+  background: linear-gradient(135deg, #4f8cff 0%, #7d61ff 100%);
+  color: white;
+  border-radius: 20px;
+}
+
+.hero-section .btn {
+  min-width: 160px;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  min-height: 180px;
+}
+
+.feature-card h5,
+.feature-card p {
+  color: white;
+}
+
+.feature-card i {
+  display: inline-block;
+}
+
 .loan-status {
   font-weight: bold;
 }
